@@ -36,20 +36,66 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.30</version> <!-- Use the latest stable version -->
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>9.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.14.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>3.2.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+		<!--        <dependency>-->
+		<!--            <groupId>org.flywaydb</groupId>-->
+		<!--            <artifactId>flyway-core</artifactId>-->
+		<!--&lt;!&ndash;            <version>11.13.2</version>&ndash;&gt;-->
+		<!--        </dependency>-->
+		<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql &ndash;&gt;-->
+		<!--        <dependency>-->
+		<!--            <groupId>org.flywaydb</groupId>-->
+		<!--            <artifactId>flyway-mysql</artifactId>-->
+		<!--&lt;!&ndash;            <version>11.13.2</version>&ndash;&gt;-->
+		<!--        </dependency>-->
+		<!--        <plugin>-->
+		<!--            <groupId>org.flywaydb</groupId>-->
+		<!--            <artifactId>flyway-maven-plugin</artifactId>-->
+		<!--            <version>10.17.0</version>-->
+		<!--        </plugin>-->
 	</dependencies>
 
 	<build>
@@ -57,15 +103,22 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
 				<configuration>
+					<source>17</source>
+					<target>17</target>
+
+					<!-- Ensure annotation processing runs and Lombok is on the processor path -->
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>1.18.30</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -76,9 +129,9 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
